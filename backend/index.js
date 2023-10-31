@@ -4,30 +4,32 @@ const mongoose = require("mongoose");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
-const proxy = require('express-http-proxy');
-const app = express();
+
 const nodemailer = require("nodemailer");
-require("dotenv").config();
+const dotenv = require('dotenv').config()
 
 const cookieParser = require("cookie-parser");
 const authRoute = require("./Routes/AuthRoute");
-const { MONGO_URL, PORT } = process.env;
-app.use(express.urlencoded({ extended: true }));
+const app = express();
 
-//mongoose.set('strictQuery', false)
-mongoose
-  .connect(MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("MongoDB is  connected successfully"))
-  .catch((err) => console.error(err));
+
+
+mongoose.set('strictQuery', false)
+mongoose.connect(process.env.MONGO_URL, () => console.log('DB is successfully connected'))
+
+// mongoose
+//   .connect(MONGO_URL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => console.log("MongoDB is  connected successfully"))
+//   .catch((err) => console.error(err));
 
 app.use(cors())
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 
+app.listen(process.env.PORT, () => console.log('Server has been started successfully'))
 
 // Root Route
 app.get("/", (req, res) => {
