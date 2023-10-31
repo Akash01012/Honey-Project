@@ -55,6 +55,7 @@ const mongoose = require("mongoose");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
+const proxy = require('express-http-proxy');
 const app = express();
 const nodemailer = require("nodemailer");
 require("dotenv").config();
