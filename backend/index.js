@@ -18,7 +18,7 @@ mongoose.set('strictQuery', false)
 // mongoose.connect(process.env.MONGO_URL, () => console.log('DB is successfully connected'))
 
 mongoose
-  .connect(MONGO_URL, {
+  .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
