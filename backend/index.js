@@ -15,15 +15,15 @@ const app = express();
 
 
 mongoose.set('strictQuery', false)
-mongoose.connect(process.env.MONGO_URL, () => console.log('DB is successfully connected'))
+// mongoose.connect(process.env.MONGO_URL, () => console.log('DB is successfully connected'))
 
-// mongoose
-//   .connect(MONGO_URL, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => console.log("MongoDB is  connected successfully"))
-//   .catch((err) => console.error(err));
+mongoose
+  .connect(MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB is  connected successfully"))
+  .catch((err) => console.error(err));
 
 app.use(cors())
 app.use(express.json())
