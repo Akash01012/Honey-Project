@@ -94,11 +94,11 @@ app.get("/", (req, res) => {
 
 // Allow cors
 app.use(function(req, res, next) {
-  // res.header("Access-Control-Allow-Origin", "*");
+   res.header("access-control-allow-origin", "*");
   const allowedOrigins = ['http://localhost:3000', 'https://aimhrs.netlify.app', 'https://aimhrs.netlify.app'];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
-       res.setHeader('Access-Control-Allow-Origin', origin);
+       res.setHeader('access-control-allow-origin', origin);
   }
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   res.header("Access-Control-Allow-credentials", true);
