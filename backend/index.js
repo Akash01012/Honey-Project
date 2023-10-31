@@ -65,17 +65,7 @@ app.get("/", (req, res) => {
 // };
 
 // app.use(cors(corsOptions));
-const corsOptions = {
-  origin: 'https://aimhrs.netlify.app',
-};
-
-app.use(cors(corsOptions));
-app.use('/employer', proxy('https://aimhrs.onrender.com'));
-
-
 app.use(cookieParser());
-
-app.use(express.json());
 
 app.use("/", authRoute);
 
