@@ -105,19 +105,26 @@ app.get("/", (req, res) => {
 //   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
 //   next();
 // });
- const allowedOrigins = ["https://aimhrs.netlify.app"];
+//  const allowedOrigins = ["https://aimhrs.netlify.app"];
 
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (allowedOrigins.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+// };
+
+// app.use(cors(corsOptions));
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: 'https://aimhrs.netlify.app',
 };
 
 app.use(cors(corsOptions));
+app.use('/employer', proxy('https://aimhrs.onrender.com'));
+
 
 app.use(cookieParser());
 
