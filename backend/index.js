@@ -14,7 +14,7 @@ const authRoute = require("./Routes/AuthRoute");
 const { MONGO_URL, PORT } = process.env;
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.set('strictQuery', false)
+//mongoose.set('strictQuery', false)
 mongoose
   .connect(MONGO_URL, {
     useNewUrlParser: true,
